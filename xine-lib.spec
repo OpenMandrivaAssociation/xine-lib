@@ -12,7 +12,6 @@
 
 %define build_vidix 0
 
-%define build_divx4 0
 %define build_xvid 0
 %define build_faad 0
 %define build_win32 0
@@ -50,8 +49,6 @@
 %{?_without_faad: %{expand: %%global build_faad 0}}
 %{?_with_win32: %{expand: %%global build_win32 1}}
 %{?_without_win32: %{expand: %%global build_win32 0}}
-%{?_with_divx4: %{expand: %%global build_divx4 1}}
-%{?_without_divx4: %{expand: %%global build_divx4 0}}
 %{?_with_xvid: %{expand: %%global build_xvid 1}}
 %{?_without_xvid: %{expand: %%global build_xvid 0}}
 %{?_with_smb: %{expand: %%global build_smb 1}}
@@ -458,24 +455,6 @@ xine is a free gpl-licensed video player for unix-like systems.
 
 %files -n %{bname}-smb
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_smb.so
-%endif
-
-#----------------------------------------------------------------------------
-
-%if %{build_divx4}
-%package -n %{bname}-divx4
-Summary:	Divx4 plugin for %{bname}
-Group: 		Video
-Requires:	%{bname}-plugins = %{version}
-ExclusiveArch:	%{ix86}
-Provides:	xine-plugins-divx4
-
-%description -n %{bname}-divx4
-This package contains the divx4linux plugin for %{bname}. It is in
-restricted because it is covered by software patents.
-
-%files -n %{bname}-divx4
-%{_libdir}/xine/plugins/%{api}/xineplug_decode_divx4.so*
 %endif
 
 #----------------------------------------------------------------------------
