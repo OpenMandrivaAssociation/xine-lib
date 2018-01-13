@@ -2,7 +2,7 @@
 %define dvdnav 0.1.4
 
 %define build_pulse 1
-%define build_magick 1
+%define build_magick 0
 %define build_caca 1
 %define build_directfb 0
 %define external_vcdnav 1
@@ -65,20 +65,19 @@
 
 %define bname xine
 %define major 2
-%define api 2.5
+%define api 2.7
 %define libname %mklibname xine %{major}
 %define devname %mklibname -d xine
 
 Summary:	A Free Video Player (Libraries)
 Name:		xine-lib
-Version:	1.2.6
-Release:	4%{?extrarelsuffix}
+Version:	1.2.9
+Release:	1%{?extrarelsuffix}
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://xine.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/xine/xine-lib/%{version}/xine-lib-%{version}.tar.xz
 Patch1:		xine-lib-1.2.6-clang.patch
-Patch2:		xine-lib-ffmpeg3.patch
 
 BuildRequires:	aalib-devel
 BuildRequires:	gettext-devel
@@ -161,7 +160,6 @@ front ends or plugins.
 %doc ChangeLog installed-docs/hackersguide
 %{_bindir}/xine-config
 %{_bindir}/xine-list-1.2
-%{multiarch_bindir}/xine-config
 %{_mandir}/man1/xine-config.1*
 %{_mandir}/man1/xine-list-1.2.1*
 %{_libdir}/*.so
@@ -210,27 +208,18 @@ will not run on other computers.
 %if %{build_alsa}
 %{_libdir}/xine/plugins/%{api}/xineplug_ao_out_alsa.so
 %endif
-%{_libdir}/xine/plugins/%{api}/xineplug_ao_out_file.so
-%{_libdir}/xine/plugins/%{api}/xineplug_ao_out_none.so
 %{_libdir}/xine/plugins/%{api}/xineplug_ao_out_oss.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_cdda.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_dvb.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_dvd.so
-%{_libdir}/xine/plugins/%{api}/xineplug_inp_http.so
-%{_libdir}/xine/plugins/%{api}/xineplug_inp_stdin_fifo.so
-%{_libdir}/xine/plugins/%{api}/xineplug_inp_file.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_mms.so
-%{_libdir}/xine/plugins/%{api}/xineplug_inp_net.so
-%{_libdir}/xine/plugins/%{api}/xineplug_inp_pnm.so
+%{_libdir}/xine/plugins/%{api}/xineplug_inp_network.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_pvr.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_rtp.so
-%{_libdir}/xine/plugins/%{api}/xineplug_inp_rtsp.so
-%{_libdir}/xine/plugins/%{api}/xineplug_inp_test.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_vcd.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_v4l2.so
 %{_libdir}/xine/plugins/%{api}/xineplug_dmx_*so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_a52.so
-%{_libdir}/xine/plugins/%{api}/xineplug_decode_bitplane.so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_dts.so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_dvaudio.so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_ff.so
@@ -243,14 +232,9 @@ will not run on other computers.
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_mpc.so*
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_mpeg2.so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_spu*.so
+%{_libdir}/xine/plugins/%{api}/xineplug_decode_rawvideo.so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_real.so
-%{_libdir}/xine/plugins/%{api}/xineplug_decode_rgb.so
-%{_libdir}/xine/plugins/%{api}/xineplug_decode_yuv.so
-%{_libdir}/xine/plugins/%{api}/xineplug_decode_vdpau_h264.so
-%{_libdir}/xine/plugins/%{api}/xineplug_decode_vdpau_h264_alter.so
-%{_libdir}/xine/plugins/%{api}/xineplug_decode_vdpau_mpeg12.so
-%{_libdir}/xine/plugins/%{api}/xineplug_decode_vdpau_mpeg4.so
-%{_libdir}/xine/plugins/%{api}/xineplug_decode_vdpau_vc1.so
+%{_libdir}/xine/plugins/%{api}/xineplug_decode_vdpau.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_bluray.so
 %{_libdir}/xine/plugins/%{api}/xineplug_nsf.so
 %{_libdir}/xine/plugins/%{api}/xineplug_sputext.so
@@ -266,7 +250,6 @@ will not run on other computers.
 %endif
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_opengl.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_opengl2.so
-%{_libdir}/xine/plugins/%{api}/xineplug_vo_out_none.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_raw.so
 %if %{build_vidix}
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_vidix.so
@@ -290,6 +273,22 @@ will not run on other computers.
 %{_libdir}/xine/plugins/%{api}/post/xineplug_post_tvtime.so
 %{_libdir}/xine/plugins/%{api}/post/xineplug_post_visualizations.so
 %{_datadir}/xine-lib
+
+#----------------------------------------------------------------------------
+
+%package -n %{bname}-gnomevfs
+Group:		Sound
+Summary:	gnome-vfs input plugin for xine
+Requires:	%{bname}-plugins = %{version}
+BuildRequires:	pkgconfig(gnome-vfs-2.0)
+
+%description -n %{bname}-gnomevfs
+xine is a free gpl-licensed video player for unix-like systems.
+
+This package contains the gnome-vfs input plugin.
+
+%files -n %{bname}-gnomevfs
+%{_libdir}/xine/plugins/%{api}/xineplug_inp_gnome_vfs.so
 
 #----------------------------------------------------------------------------
 
@@ -525,7 +524,7 @@ export OGG_LIBS=-logg
 
 %if ! %{build_optimization}
 export CFLAGS="%(echo %optflags|sed s/-Wp,-D_FORTIFY_SOURCE=2//)"
-%configure2_5x \
+%configure \
 %else
 %{?__cputoolize: %{__cputoolize}}
 #gw expanded configure2_5x macro without the CFLAGS and --build stuff
@@ -566,6 +565,9 @@ export CFLAGS="%(echo %optflags|sed s/-Wp,-D_FORTIFY_SOURCE=2//)"
 %if ! %{build_linuxfb}
 	--disable-fb \
 %endif
+%if ! %{build_magick}
+	--without-imagemagick \
+%endif
 %if %{external_ffmpeg}
  	--with-external-ffmpeg \
 %endif
@@ -582,8 +584,6 @@ export CFLAGS="%(echo %optflags|sed s/-Wp,-D_FORTIFY_SOURCE=2//)"
 
 %install
 %makeinstall_std
-
-%multiarch_binaries %{buildroot}%{_bindir}/xine-config
 
 #clean out unpackaged files
 rm -f %{buildroot}%{_libdir}/xine/plugins/*/*.la
