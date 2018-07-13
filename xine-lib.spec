@@ -76,6 +76,7 @@ Url:		http://xine.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/xine/xine-lib/%{version}/xine-lib-%{version}.tar.xz
 Patch1:		xine-lib-1.2.6-clang.patch
 
+BuildRequires:	pkgconfig(slang)
 BuildRequires:	aalib-devel
 BuildRequires:	gettext-devel
 BuildRequires:	libmpcdec-devel
