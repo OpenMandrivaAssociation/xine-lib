@@ -182,6 +182,8 @@ Provides:	xine-win32
 Requires:	%{libname} = %{version}
 # provide the plugin API version
 Provides:	xine-plugin-api = %{api}
+# no longer used
+Obsoletes:	%{bname}-gnomevfs
 
 %description -n %{bname}-plugins
 xine is a free gpl-licensed video player for unix-like systems.
@@ -271,22 +273,6 @@ will not run on other computers.
 %{_libdir}/xine/plugins/%{api}/post/xineplug_post_tvtime.so
 %{_libdir}/xine/plugins/%{api}/post/xineplug_post_visualizations.so
 %{_datadir}/xine-lib
-
-#----------------------------------------------------------------------------
-
-%package -n %{bname}-gnomevfs
-Group:		Sound
-Summary:	gnome-vfs input plugin for xine
-Requires:	%{bname}-plugins = %{version}
-BuildRequires:	pkgconfig(gnome-vfs-2.0)
-
-%description -n %{bname}-gnomevfs
-xine is a free gpl-licensed video player for unix-like systems.
-
-This package contains the gnome-vfs input plugin.
-
-%files -n %{bname}-gnomevfs
-%{_libdir}/xine/plugins/%{api}/xineplug_inp_gnome_vfs.so
 
 #----------------------------------------------------------------------------
 
