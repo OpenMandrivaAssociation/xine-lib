@@ -19,6 +19,10 @@
 %define build_win32 1
 %endif
 
+%if %mdvver <= 3000000
+%define x86_64 x86_64
+%endif
+
 %define external_ffmpeg 1
 
 %{?_with_plf: %{expand: %%global build_plf 1}}
@@ -395,7 +399,7 @@ xine is a free gpl-licensed video player for unix-like systems.
 
 #----------------------------------------------------------------------------
 
-%ifarch %{ix86} x86_64 ppc %{armx}
+%ifarch %{ix86} %{x86_64} %{armx}
 %package -n %{bname}-dxr3
 Summary:	DXR3 plugin for xine
 Group:		Video
