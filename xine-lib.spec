@@ -493,6 +493,13 @@ restricted because it is covered by software patents.
 #gw for flac
 export OGG_LIBS=-logg
 
+%ifarch %{ix86}
+# cb - with clang gives:
+# <inline asm>:22:2: error: instruction requires: 64-bit mode
+export CC=gcc
+export CXX=g++
+%endif
+
 %if ! %{build_optimization}
 export CFLAGS="%(echo %optflags|sed s/-Wp,-D_FORTIFY_SOURCE=2//)"
 %configure \
