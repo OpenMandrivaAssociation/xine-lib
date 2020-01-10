@@ -487,7 +487,7 @@ restricted because it is covered by software patents.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 #gw for flac
