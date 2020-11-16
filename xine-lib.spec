@@ -1,3 +1,6 @@
+%define _disable_ld_no_undefined 1
+%define _disable_lto 1
+
 %define _legacy_common_support 1
 %define build_optimization 0
 %define dvdnav 0.1.4
