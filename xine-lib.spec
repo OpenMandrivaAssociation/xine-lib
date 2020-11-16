@@ -494,6 +494,8 @@ restricted because it is covered by software patents.
 %autopatch -p1
 
 %build
+export CC=gcc
+export CXX=g++
 #gw for flac
 export OGG_LIBS=-logg
 
