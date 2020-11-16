@@ -72,7 +72,7 @@
 
 Summary:	A Free Video Player (Libraries)
 Name:		xine-lib
-Version:	1.2.9
+Version:	1.2.10
 Release:	1%{?extrarelsuffix}
 License:	GPLv2+
 Group:		System/Libraries
