@@ -1,11 +1,48 @@
---- xine-lib-1.2.9/src/libw32dll/wine/Makefile.in.0001~	2018-01-13 02:36:11.576817759 +0100
-+++ xine-lib-1.2.9/src/libw32dll/wine/Makefile.in	2018-01-13 02:37:24.736052946 +0100
-@@ -576,7 +576,7 @@ MAINTAINERCLEANFILES = Makefile.in
+diff -up xine-lib-1.2.11/src/libw32dll/Makefile.am.1~ xine-lib-1.2.11/src/libw32dll/Makefile.am
+--- xine-lib-1.2.11/src/libw32dll/Makefile.am.1~	2020-12-08 18:22:22.005346265 +0100
++++ xine-lib-1.2.11/src/libw32dll/Makefile.am	2020-12-08 18:22:25.566402053 +0100
+@@ -56,7 +56,7 @@ libwine_la_CPPFLAGS = $(AM_CPPFLAGS) $(X
  # disable -fomit-frame-pointer, -finline-functions, and -frename-registers
  # because they cause bad behavior of wine
- AM_CFLAGS = $(DEFAULT_OCFLAGS) $(X_CFLAGS) @W32_NO_OPTIMIZE@ \
--        -fno-omit-frame-pointer -fno-inline-functions -fno-rename-registers
-+        -fno-omit-frame-pointer -fno-inline-functions
+ libwine_la_CFLAGS = $(AM_CFLAGS) -fno-strict-aliasing $(DEFAULT_OCFLAGS) $(X_CFLAGS) @W32_NO_OPTIMIZE@ \
+-	-fno-omit-frame-pointer -fno-inline-functions -fno-rename-registers
++	-fno-omit-frame-pointer -fno-inline-functions
+ libwine_la_LIBADD = ${WINE_LIBS} -lm
  
- EXTRA_DIST = stubs.s wrapper.S
- noinst_HEADERS = \
+ #
+diff -up xine-lib-1.2.11/src/libw32dll/Makefile.in.1~ xine-lib-1.2.11/src/libw32dll/Makefile.in
+--- xine-lib-1.2.11/src/libw32dll/Makefile.in.1~	2020-12-08 18:21:39.365674525 +0100
++++ xine-lib-1.2.11/src/libw32dll/Makefile.in	2020-12-08 18:21:58.012969157 +0100
+@@ -762,7 +762,7 @@ libwine_la_CPPFLAGS = $(AM_CPPFLAGS) $(X
+ # disable -fomit-frame-pointer, -finline-functions, and -frename-registers
+ # because they cause bad behavior of wine
+ libwine_la_CFLAGS = $(AM_CFLAGS) -fno-strict-aliasing $(DEFAULT_OCFLAGS) $(X_CFLAGS) @W32_NO_OPTIMIZE@ \
+-	-fno-omit-frame-pointer -fno-inline-functions -fno-rename-registers
++	-fno-omit-frame-pointer -fno-inline-functions
+ 
+ libwine_la_LIBADD = ${WINE_LIBS} -lm
+ xineplug_decode_w32dll_la_SOURCES = group_w32.c w32codec.c qt_decoder.c
+diff -up xine-lib-1.2.11/include/xine.h.omv~ xine-lib-1.2.11/include/xine.h
+--- xine-lib-1.2.11/include/xine.h.omv~	2020-12-08 18:38:38.376625818 +0100
++++ xine-lib-1.2.11/include/xine.h	2020-12-08 18:38:42.900689427 +0100
+@@ -118,7 +118,7 @@ xine_t *xine_new (void) XINE_PROTECTED;
+ /* allow the setting of some flags before xine_init
+  * FIXME-ABI: this is currently GLOBAL
+  */
+-void xine_set_flags (xine_t *, int) XINE_PROTECTED XINE_WEAK;
++void xine_set_flags (xine_t *, int) XINE_WEAK;
+ #define XINE_FLAG_NO_WRITE_CACHE		1
+ 
+ /*
+diff -up xine-lib-1.2.11/src/xine-engine/xine.c.omv~ xine-lib-1.2.11/src/xine-engine/xine.c
+--- xine-lib-1.2.11/src/xine-engine/xine.c.omv~	2020-12-08 18:37:55.483022153 +0100
++++ xine-lib-1.2.11/src/xine-engine/xine.c	2020-12-08 18:38:07.862196481 +0100
+@@ -2657,7 +2657,7 @@ static void config_save_cb (void *this_g
+   this->save_path = entry->str_value;
+ }
+ 
+-void xine_set_flags (xine_t *this_gen, int flags)
++__attribute__((visibility("default"))) void xine_set_flags (xine_t *this_gen, int flags)
+ {
+   xine_private_t *this = (xine_private_t *)this_gen;
+   this->flags = flags;

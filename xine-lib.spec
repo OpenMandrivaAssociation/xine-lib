@@ -66,13 +66,13 @@
 
 %define bname xine
 %define major 2
-%define api 2.7
+%define api 2.9
 %define libname %mklibname xine %{major}
 %define devname %mklibname -d xine
 
 Summary:	A Free Video Player (Libraries)
 Name:		xine-lib
-Version:	1.2.9
+Version:	1.2.11
 Release:	1%{?extrarelsuffix}
 License:	GPLv2+
 Group:		System/Libraries
@@ -108,6 +108,8 @@ BuildRequires:	pkgconfig(xinerama)
 BuildRequires:	pkgconfig(xv)
 BuildRequires:	pkgconfig(xvmc)
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:	pkgconfig(dav1d)
+BuildRequires:	pkgconfig(aom)
 %if %{build_smb}
 BuildRequires:	pkgconfig(smbclient)
 %endif
@@ -247,6 +249,17 @@ will not run on other computers.
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_vaapi.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_vdpau.so
 %{_libdir}/xine/plugins/%{api}/xineplug_xiph.so
+%{_libdir}/xine/plugins/%{api}/xineplug_decode_dav1d.so
+%{_libdir}/xine/plugins/%{api}/xineplug_decode_libaom.so
+%{_libdir}/xine/plugins/%{api}/xineplug_decode_libpng.so
+%{_libdir}/xine/plugins/%{api}/xineplug_decode_to_spdif.so
+%{_libdir}/xine/plugins/%{api}/xineplug_inp_nfs.so
+%{_libdir}/xine/plugins/%{api}/xineplug_inp_ssh.so
+%{_libdir}/xine/plugins/%{api}/xineplug_tls_gnutls.so
+%{_libdir}/xine/plugins/%{api}/xineplug_tls_openssl.so
+%{_libdir}/xine/plugins/%{api}/xineplug_vo_gl_egl_wl.so
+%{_libdir}/xine/plugins/%{api}/xineplug_vo_gl_egl_x11.so
+%{_libdir}/xine/plugins/%{api}/xineplug_vo_gl_glx.so
 %if %{build_directfb}
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_directfb.so
 %endif
