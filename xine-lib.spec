@@ -189,8 +189,8 @@ Provides:	xine-win32
 Requires:	%{libname} = %{version}
 # provide the plugin API version
 Provides:	xine-plugin-api = %{api}
-# no longer used
-Obsoletes:	%{bname}-gnomevfs
+# no longer used (ben79 do we even have this?)
+# Obsoletes:	%{bname}-gnomevfs
 
 %description -n %{bname}-plugins
 xine is a free gpl-licensed video player for unix-like systems.
