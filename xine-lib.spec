@@ -4,7 +4,7 @@
 %define build_pulse 1
 %define build_magick 0
 %define build_caca 1
-%define build_directfb 0
+%define build_directfb 1
 %define external_vcdnav 1
 %define build_smb 1
 %define build_alsa 1
@@ -73,7 +73,7 @@
 Summary:	A Free Video Player (Libraries)
 Name:		xine-lib
 Version:	1.2.11
-Release:	1%{?extrarelsuffix}
+Release:	2%{?extrarelsuffix}
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://xine.sourceforge.net
@@ -81,24 +81,35 @@ Source0:	http://downloads.sourceforge.net/project/xine/xine-lib/%{version}/xine-
 Patch1:		xine-lib-1.2.6-clang.patch
 
 BuildRequires:	pkgconfig(slang)
+BuildRequires:	a52dec-devel
 BuildRequires:	aalib-devel
 BuildRequires:	gettext-devel
 BuildRequires:	libmpcdec-devel
+BuildRequires:	optipng
+BuildRequires:	pkgconfig(directfb)
+BuildRequires:	pkgconfig(dvdread)
+BuildRequires:	pkgconfig(dvdnav)
 BuildRequires:	pkgconfig(libmng)
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(gdk-2.0)
 BuildRequires:	pkgconfig(glu)
+BuildRequires:	pkgconfig(gnutls)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(jack)
 BuildRequires:	pkgconfig(libbluray)
+BuildRequires:	pkgconfig(libnfs)
 BuildRequires:	pkgconfig(libmodplug)
+BuildRequires:	pkgconfig(libssh2)
+BuildRequires:	pkgconfig(librsvg-2.0)
 BuildRequires:	pkgconfig(libv4l2)
 BuildRequires:	pkgconfig(libva)
 BuildRequires:	pkgconfig(mad)
+BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(speex)
 BuildRequires:	pkgconfig(sdl)
 BuildRequires:	pkgconfig(sm)
+BuildRequires:	pkgconfig(theora)
 BuildRequires:	pkgconfig(vdpau)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(vorbisfile)
@@ -260,6 +271,7 @@ will not run on other computers.
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_gl_glx.so
 %if %{build_directfb}
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_directfb.so
+%{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xdirectfb.so
 %endif
 %if %{build_linuxfb}
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_fb.so
@@ -569,10 +581,10 @@ export CFLAGS="%(echo %optflags|sed s/-Wp,-D_FORTIFY_SOURCE=2//)"
 # to use either codecs from RealPlayer or real-codecs, whichever is
 # present.
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 #clean out unpackaged files
 rm -f %{buildroot}%{_libdir}/xine/plugins/*/*.la
