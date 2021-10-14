@@ -251,10 +251,10 @@ will not run on other computers.
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_libaom.so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_libpng.so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_to_spdif.so
-%{_libdir}/xine/plugins/%{api}/xineplug_inp_nfs.so
-%{_libdir}/xine/plugins/%{api}/xineplug_inp_ssh.so
-%{_libdir}/xine/plugins/%{api}/xineplug_tls_gnutls.so
-%{_libdir}/xine/plugins/%{api}/xineplug_tls_openssl.so
+#{_libdir}/xine/plugins/%{api}/xineplug_inp_nfs.so
+#{_libdir}/xine/plugins/%{api}/xineplug_inp_ssh.so
+#{_libdir}/xine/plugins/%{api}/xineplug_tls_gnutls.so
+#{_libdir}/xine/plugins/%{api}/xineplug_tls_openssl.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_gl_egl_wl.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_gl_egl_x11.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_gl_glx.so
@@ -569,10 +569,10 @@ export CFLAGS="%(echo %optflags|sed s/-Wp,-D_FORTIFY_SOURCE=2//)"
 # to use either codecs from RealPlayer or real-codecs, whichever is
 # present.
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 #clean out unpackaged files
 rm -f %{buildroot}%{_libdir}/xine/plugins/*/*.la
