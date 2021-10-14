@@ -73,7 +73,7 @@
 Summary:	A Free Video Player (Libraries)
 Name:		xine-lib
 Version:	1.2.11
-Release:	1%{?extrarelsuffix}
+Release:	2%{?extrarelsuffix}
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://xine.sourceforge.net
@@ -81,24 +81,34 @@ Source0:	http://downloads.sourceforge.net/project/xine/xine-lib/%{version}/xine-
 Patch1:		xine-lib-1.2.6-clang.patch
 
 BuildRequires:	pkgconfig(slang)
+BuildRequires:	a52dec-devel
 BuildRequires:	aalib-devel
 BuildRequires:	gettext-devel
 BuildRequires:	libmpcdec-devel
+BuildRequires:	optipng
+BuildRequires:	pkgconfig(directfb)
+BuildRequires:	pkgconfig(dvdread)
 BuildRequires:	pkgconfig(libmng)
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(gdk-2.0)
 BuildRequires:	pkgconfig(glu)
+BuildRequires:	pkgconfig(gnutls)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(jack)
 BuildRequires:	pkgconfig(libbluray)
+BuildRequires:	pkgconfig(libnfs)
 BuildRequires:	pkgconfig(libmodplug)
+BuildRequires:	pkgconfig(libssh2)
+BuildRequires:	pkgconfig(librsvg-2.0)
 BuildRequires:	pkgconfig(libv4l2)
 BuildRequires:	pkgconfig(libva)
 BuildRequires:	pkgconfig(mad)
+BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(speex)
 BuildRequires:	pkgconfig(sdl)
 BuildRequires:	pkgconfig(sm)
+BuildRequires:	pkgconfig(theora)
 BuildRequires:	pkgconfig(vdpau)
 BuildRequires:	pkgconfig(vorbis)
 BuildRequires:	pkgconfig(vorbisfile)
