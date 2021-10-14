@@ -4,7 +4,7 @@
 %define build_pulse 1
 %define build_magick 0
 %define build_caca 1
-%define build_directfb 0
+%define build_directfb 1
 %define external_vcdnav 1
 %define build_smb 1
 %define build_alsa 1
@@ -88,6 +88,7 @@ BuildRequires:	libmpcdec-devel
 BuildRequires:	optipng
 BuildRequires:	pkgconfig(directfb)
 BuildRequires:	pkgconfig(dvdread)
+BuildRequires:	pkgconfig(dvdnav)
 BuildRequires:	pkgconfig(libmng)
 BuildRequires:	pkgconfig(flac)
 BuildRequires:	pkgconfig(gdk-pixbuf-2.0)
@@ -261,10 +262,10 @@ will not run on other computers.
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_libaom.so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_libpng.so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_to_spdif.so
-#{_libdir}/xine/plugins/%{api}/xineplug_inp_nfs.so
-#{_libdir}/xine/plugins/%{api}/xineplug_inp_ssh.so
-#{_libdir}/xine/plugins/%{api}/xineplug_tls_gnutls.so
-#{_libdir}/xine/plugins/%{api}/xineplug_tls_openssl.so
+%{_libdir}/xine/plugins/%{api}/xineplug_inp_nfs.so
+%{_libdir}/xine/plugins/%{api}/xineplug_inp_ssh.so
+%{_libdir}/xine/plugins/%{api}/xineplug_tls_gnutls.so
+%{_libdir}/xine/plugins/%{api}/xineplug_tls_openssl.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_gl_egl_wl.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_gl_egl_x11.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_gl_glx.so
