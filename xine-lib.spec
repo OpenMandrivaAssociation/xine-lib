@@ -271,6 +271,7 @@ will not run on other computers.
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_gl_glx.so
 %if %{build_directfb}
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_directfb.so
+%{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xdirectfb.so
 %endif
 %if %{build_linuxfb}
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_fb.so
