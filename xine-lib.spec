@@ -73,12 +73,13 @@
 Summary:	A Free Video Player (Libraries)
 Name:		xine-lib
 Version:	1.2.11
-Release:	3%{?extrarelsuffix}
+Release:	4%{?extrarelsuffix}
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://xine.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/xine/xine-lib/%{version}/xine-lib-%{version}.tar.xz
 Patch1:		xine-lib-1.2.6-clang.patch
+Patch2:		xine-lib-1.2.11-dav1d6.patch
 
 BuildRequires:	pkgconfig(slang)
 BuildRequires:	a52dec-devel
@@ -509,8 +510,7 @@ restricted because it is covered by software patents.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 #gw for flac
