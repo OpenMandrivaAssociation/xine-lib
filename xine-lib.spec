@@ -252,9 +252,14 @@ will not run on other computers.
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_rawvideo.so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_real.so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_vdpau.so
+%{_libdir}/xine/plugins/%{api}/xineplug_hw_frame_vaapi.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_bluray.so
 %{_libdir}/xine/plugins/%{api}/xineplug_nsf.so
 %{_libdir}/xine/plugins/%{api}/xineplug_sputext.so
+%{_libdir}/xine/plugins/%{api}/xineplug_va_display_drm.so
+%{_libdir}/xine/plugins/%{api}/xineplug_va_display_glx.so
+%{_libdir}/xine/plugins/%{api}/xineplug_va_display_wl.so
+%{_libdir}/xine/plugins/%{api}/xineplug_va_display_x11.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vdr.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_vaapi.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_vdpau.so
