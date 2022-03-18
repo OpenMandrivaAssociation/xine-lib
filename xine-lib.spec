@@ -66,22 +66,20 @@
 
 %define bname xine
 %define major 2
-%define api 2.9
+%define api 2.10
 %define libname %mklibname xine %{major}
 %define devname %mklibname -d xine
 
 Summary:	A Free Video Player (Libraries)
 Name:		xine-lib
-Version:	1.2.11
-Release:	6%{?extrarelsuffix}
+Version:	1.2.12
+Release:	1%{?extrarelsuffix}
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://xine.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/xine/xine-lib/%{version}/xine-lib-%{version}.tar.xz
 Patch1:		xine-lib-1.2.6-clang.patch
 Patch2:		xine-lib-1.2.11-dav1d6.patch
-# Pull in changes from stable branch (xine-lib-1.2) in hg, fixes build with ffmpeg 5.0
-Patch3:		xine-lib-1.2.11-stablebranch-20220115.patch
 
 BuildRequires:	pkgconfig(slang)
 BuildRequires:	a52dec-devel
@@ -254,9 +252,14 @@ will not run on other computers.
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_rawvideo.so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_real.so
 %{_libdir}/xine/plugins/%{api}/xineplug_decode_vdpau.so
+%{_libdir}/xine/plugins/%{api}/xineplug_hw_frame_vaapi.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_bluray.so
 %{_libdir}/xine/plugins/%{api}/xineplug_nsf.so
 %{_libdir}/xine/plugins/%{api}/xineplug_sputext.so
+%{_libdir}/xine/plugins/%{api}/xineplug_va_display_drm.so
+%{_libdir}/xine/plugins/%{api}/xineplug_va_display_glx.so
+%{_libdir}/xine/plugins/%{api}/xineplug_va_display_wl.so
+%{_libdir}/xine/plugins/%{api}/xineplug_va_display_x11.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vdr.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_vaapi.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_vdpau.so
