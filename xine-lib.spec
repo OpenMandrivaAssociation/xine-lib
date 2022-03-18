@@ -80,8 +80,6 @@ Url:		http://xine.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/xine/xine-lib/%{version}/xine-lib-%{version}.tar.xz
 Patch1:		xine-lib-1.2.6-clang.patch
 Patch2:		xine-lib-1.2.11-dav1d6.patch
-# Pull in changes from stable branch (xine-lib-1.2) in hg, fixes build with ffmpeg 5.0
-Patch3:		xine-lib-1.2.11-stablebranch-20220115.patch
 
 BuildRequires:	pkgconfig(slang)
 BuildRequires:	a52dec-devel
