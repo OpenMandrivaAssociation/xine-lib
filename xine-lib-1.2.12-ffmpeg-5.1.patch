@@ -1,0 +1,22 @@
+diff -up xine-lib-1.2.12/src/combined/ffmpeg/demux_avformat.c.omv~ xine-lib-1.2.12/src/combined/ffmpeg/demux_avformat.c
+--- xine-lib-1.2.12/src/combined/ffmpeg/demux_avformat.c.omv~	2022-09-12 04:14:48.719611330 +0200
++++ xine-lib-1.2.12/src/combined/ffmpeg/demux_avformat.c	2022-09-12 04:15:35.792867379 +0200
+@@ -31,6 +31,7 @@
+ 
+ #include <libavformat/avformat.h>
+ #include <libavformat/avio.h>
++#include <libavcodec/version.h>
+ 
+ #define LOG_MODULE "libavformat"
+ #define LOG_VERBOSE
+diff -up xine-lib-1.2.12/src/combined/ffmpeg/input_avio.c.omv~ xine-lib-1.2.12/src/combined/ffmpeg/input_avio.c
+--- xine-lib-1.2.12/src/combined/ffmpeg/input_avio.c.omv~	2022-09-12 04:11:35.759569839 +0200
++++ xine-lib-1.2.12/src/combined/ffmpeg/input_avio.c	2022-09-12 04:11:46.429627037 +0200
+@@ -29,6 +29,7 @@
+ #include <pthread.h>
+ 
+ #include <libavformat/avio.h>
++#include <libavutil/avutil.h>
+ 
+ #define LOG_MODULE "libavio"
+ #define LOG_VERBOSE

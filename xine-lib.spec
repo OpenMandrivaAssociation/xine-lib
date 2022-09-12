@@ -73,13 +73,14 @@
 Summary:	A Free Video Player (Libraries)
 Name:		xine-lib
 Version:	1.2.12
-Release:	1%{?extrarelsuffix}
+Release:	2%{?extrarelsuffix}
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://xine.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/xine/xine-lib/%{version}/xine-lib-%{version}.tar.xz
 Patch1:		xine-lib-1.2.6-clang.patch
 Patch2:		xine-lib-1.2.11-dav1d6.patch
+Patch3:		xine-lib-1.2.12-ffmpeg-5.1.patch
 
 BuildRequires:	pkgconfig(slang)
 BuildRequires:	a52dec-devel
@@ -291,8 +292,8 @@ will not run on other computers.
 %endif
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xshm.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xv.so
-%{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xvmc.so
-%{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xxmc.so
+%optional %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xvmc.so
+%optional %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xxmc.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xcbshm.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xcbxv.so
 %if %{build_win32}
