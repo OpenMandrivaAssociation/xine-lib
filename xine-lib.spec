@@ -227,6 +227,7 @@ will not run on other computers.
 %{_libdir}/xine/plugins/%{api}/xineplug_ao_out_alsa.so
 %endif
 %{_libdir}/xine/plugins/%{api}/xineplug_ao_out_oss.so
+%{_libdir}/xine/plugins/%{api}/xineplug_inp_crypto.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_cdda.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_dvb.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_dvd.so
