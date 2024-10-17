@@ -76,7 +76,7 @@ Version:	1.2.12
 Release:	5%{?extrarelsuffix}1
 License:	GPLv2+
 Group:		System/Libraries
-Url:		http://xine.sourceforge.net
+Url:		https://xine.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/xine/xine-lib/%{version}/xine-lib-%{version}.tar.xz
 Patch1:		xine-lib-1.2.6-clang.patch
 Patch2:		xine-lib-1.2.11-dav1d6.patch
