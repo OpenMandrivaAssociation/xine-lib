@@ -121,6 +121,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:	pkgconfig(dav1d)
 BuildRequires:	pkgconfig(sndio)
 BuildRequires:	pkgconfig(aom)
+BuildRequires:	pkgconfig(libgcrypt)
 %if %{build_smb}
 BuildRequires:	pkgconfig(smbclient)
 %endif
