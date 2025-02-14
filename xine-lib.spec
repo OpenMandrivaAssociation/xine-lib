@@ -66,21 +66,18 @@
 
 %define bname xine
 %define major 2
-%define api 2.10
+%define api 2.11
 %define libname %mklibname xine %{major}
 %define devname %mklibname -d xine
 
 Summary:	A Free Video Player (Libraries)
 Name:		xine-lib
-Version:	1.2.12
-Release:	5%{?extrarelsuffix}2
+Version:	1.2.13
+Release:	1%{?extrarelsuffix}
 License:	GPLv2+
 Group:		System/Libraries
 Url:		https://xine.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/xine/xine-lib/%{version}/xine-lib-%{version}.tar.xz
-Patch1:		xine-lib-1.2.6-clang.patch
-Patch2:		xine-lib-1.2.11-dav1d6.patch
-Patch3:		xine-lib-1.2.12-ffmpeg-5.1.patch
 
 BuildRequires:	pkgconfig(slang)
 BuildRequires:	a52dec-devel
@@ -122,6 +119,7 @@ BuildRequires:	pkgconfig(xv)
 BuildRequires:	pkgconfig(xvmc)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:	pkgconfig(dav1d)
+BuildRequires:	pkgconfig(sndio)
 BuildRequires:	pkgconfig(aom)
 %if %{build_smb}
 BuildRequires:	pkgconfig(smbclient)
@@ -143,6 +141,16 @@ xine is a free gpl-licensed video player for unix-like systems.
 This package is in restricted repository because the AAC decoder is
 covered by patents.
 %endif
+
+%patchlist
+xine-lib-1.2.6-clang.patch
+# From upstream hg
+# ffmpeg compatibility
+15250.patch
+15256.patch
+15257.patch
+15287.patch
+15288.patch
 
 #----------------------------------------------------------------------------
 
@@ -227,6 +235,7 @@ will not run on other computers.
 %{_libdir}/xine/plugins/%{api}/xineplug_ao_out_alsa.so
 %endif
 %{_libdir}/xine/plugins/%{api}/xineplug_ao_out_oss.so
+%{_libdir}/xine/plugins/%{api}/xineplug_ao_out_sndio.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_crypto.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_cdda.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_dvb.so
