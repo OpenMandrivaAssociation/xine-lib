@@ -236,7 +236,6 @@ will not run on other computers.
 %if %{build_alsa}
 %{_libdir}/xine/plugins/%{api}/xineplug_ao_out_alsa.so
 %endif
-%{_libdir}/xine/plugins/%{api}/xineplug_ao_out_esd.so
 %{_libdir}/xine/plugins/%{api}/xineplug_ao_out_oss.so
 %{_libdir}/xine/plugins/%{api}/xineplug_ao_out_sndio.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_crypto.so
@@ -608,6 +607,7 @@ export CFLAGS="%(echo %optflags|sed s/-Wp,-D_FORTIFY_SOURCE=2//)"
 #clean out unpackaged files
 rm -f %{buildroot}%{_libdir}/xine/plugins/*/*.la
 rm -f %{buildroot}%{_libdir}/xine/plugins/*/post/*.la
+rm -f %{buildroot}%{_libdir}/xine/plugins/%{api}/xineplug_ao_out_esd.so
 rm -rf installed-docs
 mv %{buildroot}%{_datadir}/doc/xine-lib installed-docs
 rm -f %{buildroot}%{_libdir}/xine/plugins/*/xineplug_inp_vcdo.so
