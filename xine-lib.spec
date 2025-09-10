@@ -73,7 +73,7 @@
 Summary:	A Free Video Player (Libraries)
 Name:		xine-lib
 Version:	1.2.13
-Release:	1%{?extrarelsuffix}3
+Release:	1%{?extrarelsuffix}4
 License:	GPLv2+
 Group:		System/Libraries
 Url:		https://xine.sourceforge.net
@@ -152,6 +152,7 @@ xine-lib-1.2.6-clang.patch
 15257.patch
 15287.patch
 15288.patch
+fix-xine-lib-ffmpeg8-types.patch
 
 #----------------------------------------------------------------------------
 
@@ -235,6 +236,7 @@ will not run on other computers.
 %if %{build_alsa}
 %{_libdir}/xine/plugins/%{api}/xineplug_ao_out_alsa.so
 %endif
+%{_libdir}/xine/plugins/%{api}/xineplug_ao_out_esd.so
 %{_libdir}/xine/plugins/%{api}/xineplug_ao_out_oss.so
 %{_libdir}/xine/plugins/%{api}/xineplug_ao_out_sndio.so
 %{_libdir}/xine/plugins/%{api}/xineplug_inp_crypto.so
@@ -303,8 +305,8 @@ will not run on other computers.
 %endif
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xshm.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xv.so
-%optional %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xvmc.so
-%optional %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xxmc.so
+# %optional %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xvmc.so
+# %optional %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xxmc.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xcbshm.so
 %{_libdir}/xine/plugins/%{api}/xineplug_vo_out_xcbxv.so
 %if %{build_win32}
