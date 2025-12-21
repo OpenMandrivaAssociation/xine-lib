@@ -79,6 +79,11 @@ Group:		System/Libraries
 Url:		https://xine.sourceforge.net
 Source0:	http://downloads.sourceforge.net/project/xine/xine-lib/%{version}/xine-lib-%{version}.tar.xz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(slang)
 BuildRequires:	a52dec-devel
 BuildRequires:	aalib-devel
