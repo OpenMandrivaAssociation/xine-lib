@@ -618,5 +618,6 @@ rm -f %{buildroot}%{_libdir}/xine/plugins/%{api}/xineplug_ao_out_esd.so
 rm -rf installed-docs
 mv %{buildroot}%{_datadir}/doc/xine-lib installed-docs
 rm -f %{buildroot}%{_libdir}/xine/plugins/*/xineplug_inp_vcdo.so
+rm -f %{buildroot}%{_libdir}/libxine-interface.la
 
 %find_lang libxine2 || touch libxine2.lang
