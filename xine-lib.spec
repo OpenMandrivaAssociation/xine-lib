@@ -1,6 +1,8 @@
 %define build_optimization 0
 %define dvdnav 0.1.4
 
+%global optflags %{optflags} -Wno-incompatible-function-pointer-types
+
 %define build_pulse 1
 %define build_magick 0
 %define build_caca 1
