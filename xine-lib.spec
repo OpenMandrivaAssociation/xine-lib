@@ -75,7 +75,7 @@
 Summary:	A Free Video Player (Libraries)
 Name:		xine-lib
 Version:	1.2.13
-Release:	1%{?extrarelsuffix}9
+Release:	1%{?extrarelsuffix}10
 License:	GPLv2+
 Group:		System/Libraries
 Url:		https://xine.sourceforge.net
@@ -87,6 +87,7 @@ BuildRequires:	libtool-base
 BuildRequires:	slibtool
 BuildRequires:	make
 BuildRequires:	pkgconfig(slang)
+BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	a52dec-devel
 BuildRequires:	aalib-devel
 BuildRequires:	gettext-devel
